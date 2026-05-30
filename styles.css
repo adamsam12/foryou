@@ -1,0 +1,121 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+*{box-sizing:border-box}
+body{
+margin:0;
+overflow:hidden;
+background:#000;
+color:#fff;
+font-family:'Cormorant Garamond',serif;
+}
+
+#bg{
+position:fixed;
+inset:0;
+background:url('fondo.jpg') center/cover no-repeat;
+filter:brightness(.35);
+animation:zoom 60s linear infinite alternate;
+}
+@keyframes zoom{
+from{transform:scale(1)}
+to{transform:scale(1.08)}
+}
+
+.overlay{
+position:fixed;inset:0;
+background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.6));
+}
+
+#intro{
+position:fixed;inset:0;z-index:999;
+display:flex;justify-content:center;align-items:center;
+background:#000;
+}
+.glass{
+padding:30px;
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(10px);
+text-align:center;
+border-radius:20px;
+}
+h1{
+font-family:'Dancing Script',cursive;
+font-size:4rem;
+margin:0 0 20px;
+}
+#startBtn{
+padding:14px 28px;
+border-radius:40px;
+border:1px solid rgba(255,255,255,.4);
+background:rgba(255,255,255,.08);
+color:#fff;
+cursor:pointer;
+font-size:1.1rem;
+transition:.3s;
+}
+#startBtn:hover{transform:scale(1.05)}
+
+#lyrics{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:min(900px,90vw);
+z-index:20;
+text-align:center;
+}
+
+.line{
+font-size:clamp(1.4rem,3vw,2.4rem);
+line-height:1.6;
+margin:22px 0;
+opacity:.15;
+filter:blur(2px);
+transition:all 1s;
+transform:scale(.95);
+}
+
+.line.current{
+opacity:1;
+filter:none;
+transform:scale(1.02);
+text-shadow:0 0 20px rgba(255,255,255,.35);
+}
+
+.person{
+position:fixed;
+bottom:80px;
+width:18px;
+height:70px;
+background:#111;
+border-radius:12px;
+opacity:0;
+transition:6s;
+z-index:15;
+}
+#p1{left:35%}
+#p2{left:40%}
+
+#house{
+position:fixed;
+right:12%;
+bottom:110px;
+width:50px;
+height:35px;
+background:#ffe8a3;
+opacity:0;
+transition:3s;
+z-index:15;
+}
+
+#shooting{
+position:fixed;
+top:20%;
+left:-300px;
+width:280px;
+height:2px;
+background:linear-gradient(to right,#fff,transparent);
+opacity:0;
+z-index:15;
+}
