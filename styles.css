@@ -167,19 +167,34 @@ body{
 @keyframes sep1{to{transform:translateX(-142px);}}
 @keyframes sep2{to{transform:translateX(142px);}}
 
-.star{
+.shooting-star{
   position:fixed;
-  width:3px;
-  height:3px;
-  background:#fff;
-  border-radius:50%;
-  opacity:.85;
-  box-shadow:0 0 10px rgba(255,255,255,.8);
-  animation:twinkle 3s infinite;
+  width:6px;
+  height:4px;
+  background:linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  box-shadow:0 0 18px rgba(255,255,255,.95),0 0 38px rgba(255,200,255,.4);
+  transform:rotate(-20deg);
+  opacity:.95;
+  z-index:30;
+  filter:blur(0.7px);
+  overflow:visible;
+  animation:shootStar var(--shoot-duration, 4s) linear forwards;
 }
 
-@keyframes twinkle{
-  50%{opacity:.22;}
+.shooting-star::after{
+  content:'';
+  position:absolute;
+  right:100%;
+  top:50%;
+  width:220px;
+  height:5px;
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.6), rgba(255,255,255,0));
+  transform:translateY(-50%);
+  filter:blur(1px);
+}
+
+@keyframes shootStar{
+  to{transform:translateX(140vw) translateY(38vh) rotate(-20deg); opacity:0;}
 }
 
 @media(max-width:768px){

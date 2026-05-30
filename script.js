@@ -31,14 +31,14 @@ const p2 = document.getElementById('p2');
 let index = 0;
 let sceneTimeout;
 
-function createStar() {
+function createShootingStar() {
   const star = document.createElement('div');
-  star.className = 'star';
-  star.style.left = `${Math.random() * 100}%`;
-  star.style.top = `${Math.random() * 100}%`;
-  star.style.opacity = `${0.3 + Math.random() * 0.7}`;
-  star.style.animationDelay = `${Math.random() * 3}s`;
+  star.className = 'shooting-star';
+  star.style.top = `${Math.random() * 24 + 6}%`;
+  star.style.animationDuration = `${3.5 + Math.random() * 1.5}s`;
+  star.style.left = '-14vw';
   document.body.appendChild(star);
+  star.addEventListener('animationend', () => star.remove());
 }
 
 function shootMeteor() {
@@ -87,10 +87,8 @@ function startStory() {
   intro.style.display = 'none';
   music.play().catch(() => {});
 
-  for (let i = 0; i < 75; i += 1) {
-    createStar();
-  }
-  setInterval(createStar, 500);
+  createShootingStar();
+  setInterval(createShootingStar, 3200);
   showScene();
 }
 
