@@ -72,6 +72,6 @@ function run(){
  }
 
  index++;
- const delay=Math.max(5000, Math.min(12000, txt.length*55));
+ const delay = 3000 + (txt.length * 50);
  setTimeout(run, delay);
 }
