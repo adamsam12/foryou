@@ -2,37 +2,33 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Corina</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div id="intro">
+<div id="bg"></div>
+<div class="overlay"></div>
+
+<div id="start">
   <div class="glass">
     <h1>Para Corina</h1>
-    <p>Hay palabras que tardan en escribirse...</p>
-    <p>Pero la escencia es lo mismo</p>
+    <p>Hay palabras que tardan en escribirse.<br>No porque falten...<br>sino porque significan demasiado.</p>
     <button id="startBtn">✦ Comenzar ✦</button>
   </div>
 </div>
 
 <audio id="music" loop>
- <source src="musica.mp3" type="audio/mpeg">
+  <source src="musica.m4a" type="audio/mpeg">
 </audio>
 
-<div id="bg"></div>
-<div class="overlay"></div>
-
-<div id="lyrics"></div>
-
-<div id="characters">
-  <div id="p1" class="person"></div>
-  <div id="p2" class="person"></div>
+<div id="scene">
+  <div id="text"></div>
+  <div id="shooting"></div>
+  <div id="p1" class="silhouette"></div>
+  <div id="p2" class="silhouette"></div>
 </div>
-
-<div id="house"></div>
-<div id="shooting"></div>
 
 <script src="script.js"></script>
 </body>

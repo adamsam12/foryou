@@ -1,121 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:wght@400;600&family=Caveat:wght@400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap');
-
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;}
 body{
-margin:0;
-overflow:hidden;
-background:#000;
-color:#fff;
-font-family:'Cormorant Garamond',serif;
+  margin:0;
+  overflow:hidden;
+  background:#000;
+  color:#fff;
+  font-family:'Cormorant Garamond',serif;
 }
 
 #bg{
-position:fixed;
-inset:0;
-background:url('fondo.jpg') center/cover no-repeat;
-filter:brightness(.35);
-animation:zoom 60s linear infinite alternate;
+  position:fixed;
+  inset:0;
+  background:url('fondo.jpeg') center/cover no-repeat;
+  filter:brightness(.68);
+  animation:zoom 80s linear infinite alternate;
 }
 @keyframes zoom{
-from{transform:scale(1)}
-to{transform:scale(1.08)}
+  from{transform:scale(1)}
+  to{transform:scale(1.08)}
 }
 
 .overlay{
-position:fixed;inset:0;
-background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.6));
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.12),rgba(0,0,0,.38));
 }
 
-#intro{
-position:fixed;inset:0;z-index:999;
-display:flex;justify-content:center;align-items:center;
-background:#000;
+#start{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.55);
+  padding:30px;
+  text-align:center;
 }
+
 .glass{
-padding:30px;
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(10px);
-text-align:center;
-border-radius:20px;
+  padding:42px 38px;
+  border-radius:30px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(14px);
+  box-shadow:0 30px 90px rgba(0,0,0,.55);
 }
-h1{
-font-family:'Dancing Script',cursive;
-font-size:4rem;
-margin:0 0 20px;
+
+#start h1{
+  font-family:'Dancing Script',cursive;
+  font-size:4.4rem;
+  margin:0 0 22px;
+  color:#ffb3d1;
+  text-shadow:0 0 18px rgba(255,12,120,.7),0 0 36px rgba(255,90,170,.35),0 14px 35px rgba(0,0,0,.32);
+  animation:titleGlow 3.5s ease-in-out infinite;
+  letter-spacing:.03em;
 }
+
+@keyframes titleGlow{
+  0%,100%{
+    text-shadow:0 0 18px rgba(255,14,110,.6),0 0 36px rgba(255,75,160,.3),0 14px 35px rgba(0,0,0,.32);
+  }
+  50%{
+    text-shadow:0 0 28px rgba(255,16,120,.9),0 0 48px rgba(255,110,190,.4),0 14px 45px rgba(0,0,0,.36);
+  }
+}
+
+#start p{
+  margin:0 auto 30px;
+  max-width:620px;
+  line-height:1.82;
+  color:rgba(255,239,245,.9);
+  font-size:1.1rem;
+}
+
 #startBtn{
-padding:14px 28px;
-border-radius:40px;
-border:1px solid rgba(255,255,255,.4);
-background:rgba(255,255,255,.08);
-color:#fff;
-cursor:pointer;
-font-size:1.1rem;
-transition:.3s;
-}
-#startBtn:hover{transform:scale(1.05)}
-
-#lyrics{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:min(900px,90vw);
-z-index:20;
-text-align:center;
+  padding:16px 38px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff2b7a,#ff6caa);
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  cursor:pointer;
+  box-shadow:0 0 18px rgba(255,55,145,.45),0 0 40px rgba(255,55,145,.2);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+  animation:floatBtn 3s ease-in-out infinite;
 }
 
-.line{
-font-size:clamp(1.4rem,3vw,2.4rem);
-line-height:1.6;
-margin:22px 0;
-opacity:.15;
-filter:blur(2px);
-transition:all 1s;
-transform:scale(.95);
+#startBtn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 26px rgba(255,65,160,.6),0 0 56px rgba(255,65,160,.24);
 }
 
-.line.current{
-opacity:1;
-filter:none;
-transform:scale(1.02);
-text-shadow:0 0 20px rgba(255,255,255,.35);
+#startBtn.clicked{
+  transform:scale(.98);
+  filter:brightness(1.08);
+  box-shadow:0 0 30px rgba(255,80,170,.8),0 0 70px rgba(255,80,170,.3);
 }
 
-.person{
-position:fixed;
-bottom:80px;
-width:18px;
-height:70px;
-background:#111;
-border-radius:12px;
-opacity:0;
-transition:6s;
-z-index:15;
+@keyframes floatBtn{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
 }
-#p1{left:35%}
-#p2{left:40%}
 
-#house{
-position:fixed;
-right:12%;
-bottom:110px;
-width:50px;
-height:35px;
-background:#ffe8a3;
-opacity:0;
-transition:3s;
-z-index:15;
+#scene{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  pointer-events:none;
+}
+
+#text{
+  max-width:900px;
+  padding:0 18px;
+  text-align:center;
+  font-family:'Caveat',cursive;
+  font-size:clamp(1.4rem,3vw,2.8rem);
+  line-height:1.85;
+  color:#f3e8f4;
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .95s ease,transform .95s ease;
+  text-shadow: 3px 3px 0px rgba(0,0,0,.9), 6px 6px 12px rgba(0,0,0,.7);
+}
+
+#text.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 #shooting{
-position:fixed;
-top:20%;
-left:-300px;
-width:280px;
-height:2px;
-background:linear-gradient(to right,#fff,transparent);
-opacity:0;
-z-index:15;
+  position:absolute;
+  top:18%;
+  left:-22%;
+  width:260px;
+  height:2px;
+  background:linear-gradient(to right,#fff,transparent);
+  opacity:0;
 }
+
+.silhouette{
+  position:absolute;
+  bottom:8%;
+  width:30px;
+  height:80px;
+  background:rgba(255,255,255,.08);
+  border-radius:18px 18px 8px 8px;
+  opacity:0;
+}
+
+#p1{left:30%;}
+#p2{left:38%;}
+
+.walk{opacity:1;animation:walk 12s linear forwards;}
+.separate1{opacity:1;animation:sep1 10s forwards;}
+.separate2{opacity:1;animation:sep2 10s forwards;}
+
+@keyframes walk{from{transform:translateX(0);}to{transform:translateX(92px);}}
+@keyframes sep1{to{transform:translateX(-142px);}}
+@keyframes sep2{to{transform:translateX(142px);}}
+
+.star{
+  position:fixed;
+  width:3px;
+  height:3px;
+  background:#fff;
+  border-radius:50%;
+  opacity:.85;
+  box-shadow:0 0 10px rgba(255,255,255,.8);
+  animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+  50%{opacity:.22;}
+}
+
+@media(max-width:768px){
+  #start h1{font-size:3rem;}
+  #start p{font-size:1rem;}
+  #text{font-size:clamp(0.95rem,4vw,1.5rem);}
+  #p1{left:22%;}
+  #p2{left:42%;}
+}
+
