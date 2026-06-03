@@ -1,5 +1,10 @@
 const scenes = [
-  "Hola, Corina.",
+
+  "Yo si te quise de verdad, mas de lo que te imaginas. Te quise con todo lo que soy, con mis virtudes y mis defectos, con mis aciertos y mis errores. Te quise con la intensidad de un amor que no entiende de razones ni de lógica",
+  "Nunca fue mi intención hacerte daño, ni lastimarte, ni hacerte sentir que no eras importante para mí",
+  "No me diverti como tu lo dices, cada momento a tu lado fue especial, cada risa, cada abrazo, cada beso, cada conversación, cada silencio compartido. Todo eso fue parte de lo que me hizo quererte tanto. ",
+  "Tiempo es lo que quiero para ordenar todo lo que tengo.",
+  "Corina.",
   "Antes que nada, gracias por tu carta. Gracias por abrir tu corazón de una forma tan sincera y tan valiente.",
   "No voy a mentirte, leer cada una de tus palabras me sorprendió y me dolió profundamente. Hubo momentos en los que sentí que todo se derrumbaba dentro de mí. Aun así, agradezco haberlas leído, porque en cada línea pude sentir el cariño tan grande que alguna vez compartimos.",
   "Fueron pocos los momentos que pasé a tu lado, pero fueron únicos. Me enseñaste algo que muchas veces escuché decir y que nunca había vivido realmente: que el amor no entiende de edades, ni de tiempos, ni de explicaciones. Tú me lo enseñaste con cada abrazo, con cada sonrisa, con cada beso tuyo sobre todo con cada momento que compartimos.",
@@ -16,8 +21,7 @@ const scenes = [
   "Cuídate mucho, cosita linda.",
   "Y si la noche es buena conmigo, espero soñarte una vez más, para darte ese beso que se quedó pendiente.",
   "Tal vez esta carta llegue tarde a la tuya, pero quería pensarlo y leerlo mucho para encontrar las palabras correctas, así como tú, correcta. Termino aquí porque si sigo escribiendo nunca termino. Adiós Corina, Adiós amor de mi vida.",
-  "Con cariño el “Atrevido”.",
-  "P.D. No debería contarte más sobre mi vida, pero este domingo estaré por Ayacucho. Quizás el destino quiera regalarnos una última conversación."
+  "Con cariño “Atrevido”.",
 ];
 
 const textEl = document.getElementById('text');
@@ -27,6 +31,11 @@ const music = document.getElementById('music');
 const shooting = document.getElementById('shooting');
 const p1 = document.getElementById('p1');
 const p2 = document.getElementById('p2');
+
+const visitCountEl = document.createElement('div');
+visitCountEl.id = 'visitCount';
+visitCountEl.textContent = 'Cargando visitas...';
+document.body.appendChild(visitCountEl);
 
 let index = 0;
 let sceneTimeout;
@@ -81,6 +90,17 @@ function showScene() {
   }, 800);
 }
 
+function updateVisitCount() {
+  fetch('/visit')
+    .then((response) => response.json())
+    .then((data) => {
+      visitCountEl.textContent = `Visitas recibidas: ${data.count}`;
+    })
+    .catch(() => {
+      visitCountEl.textContent = '';
+    });
+}
+
 function startStory() {
   startBtn.classList.add('clicked');
   setTimeout(() => startBtn.classList.remove('clicked'), 600);
@@ -92,4 +112,5 @@ function startStory() {
   showScene();
 }
 
+window.addEventListener('load', updateVisitCount);
 startBtn.addEventListener('click', startStory);
